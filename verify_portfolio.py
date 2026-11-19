@@ -47,6 +47,12 @@ def test_portfolio():
     assert 'closedby="any"' in html
     assert "role=\"dialog\"" not in html
     assert "aria-modal" not in html
+    assert '<nav aria-label="Primary">' in html
+    assert 'role="tablist"' not in html
+    assert 'aria-pressed="true"' in html
+    assert 'role="list"' in html
+    assert 'aria-describedby="blog-title-1"' in html
+    assert "DateOnly dutyDate" in html
     assert "overscroll-behavior: contain" in css
     assert "closedBy" in js
 
@@ -54,11 +60,13 @@ def test_portfolio():
     forbidden_years = re.findall(r"\b(201[5-9]|202[0-7])\b", html + "\n" + js)
     assert not forbidden_years, f"Found forbidden date/year strings: {forbidden_years}"
 
-    # 6. Check all data-i18n keys exist in both EN and FR dictionaries in app.js
+    # 6. Check all data-i18n keys exist in both EN and FR dictionaries in app.js (including modal bodies)
     i18n_keys = set(re.findall(r'data-i18n="([^"]+)"', html))
-    assert len(i18n_keys) >= 40, f"Expected at least 40 i18n keys, found {len(i18n_keys)}"
+    assert len(i18n_keys) >= 120, f"Expected at least 120 i18n keys (including modal body translations), found {len(i18n_keys)}"
+    en_block, fr_block = js.split("fr: {", 1)
     for key in i18n_keys:
-        assert f"{key}:" in js, f"Missing i18n key '{key}' in app.js dictionary"
+        assert f"{key}:" in en_block, f"Missing i18n key '{key}' in EN dictionary"
+        assert f"{key}:" in fr_block, f"Missing i18n key '{key}' in FR dictionary"
 
     print(f"ALL TESTS PASSED! Verified {len(required_files)} files and {len(i18n_keys)} bilingual i18n keys with 0 date violations.")
 

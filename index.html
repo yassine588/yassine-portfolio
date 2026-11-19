@@ -24,7 +24,7 @@
         <span>Yassine Karfouh</span>
       </a>
 
-      <nav aria-label="Primary Navigation">
+      <nav aria-label="Primary">
         <ul class="nav-links">
           <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
           <li><a href="#blog" data-i18n="nav_blog">Engineering Blog</a></li>
@@ -140,11 +140,11 @@
           </p>
         </div>
 
-        <div class="filter-bar" role="tablist" aria-label="Filter projects by domain">
-          <button type="button" class="filter-btn active" data-filter="all" data-i18n="filter_all">All Systems (5)</button>
-          <button type="button" class="filter-btn" data-filter="automation" data-i18n="filter_auto">n8n &amp; Workflow Automation</button>
-          <button type="button" class="filter-btn" data-filter="ai" data-i18n="filter_ai">AI, LLM &amp; Computer Vision</button>
-          <button type="button" class="filter-btn" data-filter="enterprise" data-i18n="filter_ent">Enterprise RBAC &amp; Full Stack</button>
+        <div class="filter-bar" role="group" aria-label="Filter projects by domain">
+          <button type="button" class="filter-btn active" aria-pressed="true" data-filter="all" data-i18n="filter_all">All Systems (5)</button>
+          <button type="button" class="filter-btn" aria-pressed="false" data-filter="automation" data-i18n="filter_auto">n8n &amp; Workflow Automation</button>
+          <button type="button" class="filter-btn" aria-pressed="false" data-filter="ai" data-i18n="filter_ai">AI, LLM &amp; Computer Vision</button>
+          <button type="button" class="filter-btn" aria-pressed="false" data-filter="enterprise" data-i18n="filter_ent">Enterprise RBAC &amp; Full Stack</button>
         </div>
 
         <div class="cards-grid" id="projectsGrid">
@@ -154,7 +154,7 @@
               <span class="card-category" data-i18n="p1_cat">Workflow Orchestration &amp; Webhook Security</span>
               <h3 class="card-title">LendLoop</h3>
               <p class="card-subtitle" data-i18n="p1_sub">Automated Workflow &amp; Secure Webhook Integration Platform</p>
-              <ul class="card-list">
+              <ul class="card-list" role="list">
                 <li data-i18n="p1_b1">Architected an event-driven platform integrating a reactive Convex backend with containerized n8n workflows for real-time request notifications, scheduled daily overdue reminders, and automated incident handling.</li>
                 <li data-i18n="p1_b2">Engineered bidirectional HMAC-SHA256 webhook signing with 300-second replay protection, exponential backoff retries, idempotent callback write-backs, and real-time automation health timelines.</li>
                 <li data-i18n="p1_b3">Enforced server-side Role-Based Access Control (RBAC), strict API data-minimization contracts, and automated Vitest suites auditing security, RBAC, and workflow JSON definitions.</li>
@@ -184,7 +184,7 @@
               <span class="card-category" data-i18n="p2_cat">AI Document Processing &amp; RAG Pipeline</span>
               <h3 class="card-title">FactureScan</h3>
               <p class="card-subtitle" data-i18n="p2_sub">Automated AI Document &amp; Invoice Processing Pipeline</p>
-              <ul class="card-list">
+              <ul class="card-list" role="list">
                 <li data-i18n="p2_b1">Designed an end-to-end automated ingestion and OCR extraction workflow in n8n using Claude AI vision models and RAG/embedding pipelines to transform unstructured invoices into validated JSON contracts.</li>
                 <li data-i18n="p2_b2">Integrated Spring Boot REST APIs and Oracle DB persistence with automated schema validation, error-recovery routing, Docker Compose containerization, and zero-trust exposure via Cloudflare Tunnel.</li>
               </ul>
@@ -213,7 +213,7 @@
               <span class="card-category" data-i18n="p3_cat">Enterprise Operations &amp; Database Engineering</span>
               <h3 class="card-title">BodyGuard System &amp; SecuriManager Pro</h3>
               <p class="card-subtitle" data-i18n="p3_sub">Enterprise Operations, Audit &amp; RBAC Platforms</p>
-              <ul class="card-list">
+              <ul class="card-list" role="list">
                 <li data-i18n="p3_b1">Built offline-first enterprise applications managing security personnel, duty schedules, and contracts with granular RBAC, structured audit timestamps, and automated backup/recovery routines.</li>
                 <li data-i18n="p3_b2">Diagnosed and resolved SQL N+1 query bottlenecks and UI thread-blocking issues; engineered resilient EF Core migrations targeting Oracle XE (RAW(16) GUID mapping) and local SQLite stores.</li>
               </ul>
@@ -242,7 +242,7 @@
               <span class="card-category" data-i18n="p4_cat">Multilingual SaaS &amp; Document Workflows</span>
               <h3 class="card-title">Corriger &amp; Traduire</h3>
               <p class="card-subtitle" data-i18n="p4_sub">Multilingual Linguistic &amp; Document Workflow Platform</p>
-              <ul class="card-list">
+              <ul class="card-list" role="list">
                 <li data-i18n="p4_b1">Architected a high-performance quadrilingual platform (Arabic, French, English, Hebrew) with automated client-side PDF document generation pipelines and bidirectional RTL/LTR layout engines.</li>
                 <li data-i18n="p4_b2">Implemented dynamic i18n routing, automated linguistic processing workflows, and Core Web Vitals optimization for fast interactive document rendering.</li>
               </ul>
@@ -269,7 +269,7 @@
               <span class="card-category" data-i18n="p5_cat">Deep Learning, Computer Vision &amp; IoT Telemetry</span>
               <h3 class="card-title">Life Guard IoT &amp; Computer Vision AI</h3>
               <p class="card-subtitle" data-i18n="p5_sub">Real-Time Wearable Telemetry &amp; MobileNetV2 Vision Classifiers</p>
-              <ul class="card-list">
+              <ul class="card-list" role="list">
                 <li data-i18n="p5_b1">Engineered Node.js REST APIs for real-time wearable health telemetry ingestion (heart rate, SpO2, blood pressure, GPS) with automated anomaly detection and emergency alert routing.</li>
                 <li data-i18n="p5_b2">Trained and deployed Python/TensorFlow CNN classifiers (MobileNetV2 transfer learning &amp; OpenCV) for real-time video inference in Shop Win and Smart Trash classification systems.</li>
               </ul>
@@ -313,7 +313,7 @@
                 <span>•</span>
                 <span>n8n / Webhooks / Security</span>
               </div>
-              <h3 class="blog-title" data-i18n="b1_title">
+              <h3 id="blog-title-1" class="blog-title" data-i18n="b1_title">
                 Securing Bidirectional n8n Webhooks with HMAC-SHA256, Replay Protection, and Idempotent Callbacks
               </h3>
               <p class="blog-excerpt" data-i18n="b1_excerpt">
@@ -327,7 +327,7 @@
                 <span class="tag">Idempotency</span>
                 <span class="tag">Vitest</span>
               </div>
-              <button type="button" class="btn-read-article" data-open-dialog="dialog-article-1" data-i18n="read_full_article">
+              <button type="button" class="btn-read-article" data-open-dialog="dialog-article-1" aria-describedby="blog-title-1" data-i18n="read_full_article">
                 Read Full Technical Article →
               </button>
             </div>
@@ -341,7 +341,7 @@
                 <span>•</span>
                 <span>AI / LLM / RAG / Spring Boot</span>
               </div>
-              <h3 class="blog-title" data-i18n="b2_title">
+              <h3 id="blog-title-2" class="blog-title" data-i18n="b2_title">
                 Building Production AI Document Extraction Pipelines with n8n, Vision LLMs, and RAG
               </h3>
               <p class="blog-excerpt" data-i18n="b2_excerpt">
@@ -355,7 +355,7 @@
                 <span class="tag">n8n</span>
                 <span class="tag">Spring Boot</span>
               </div>
-              <button type="button" class="btn-read-article" data-open-dialog="dialog-article-2" data-i18n="read_full_article">
+              <button type="button" class="btn-read-article" data-open-dialog="dialog-article-2" aria-describedby="blog-title-2" data-i18n="read_full_article">
                 Read Full Technical Article →
               </button>
             </div>
@@ -369,7 +369,7 @@
                 <span>•</span>
                 <span>.NET 8 / Oracle XE / RBAC</span>
               </div>
-              <h3 class="blog-title" data-i18n="b3_title">
+              <h3 id="blog-title-3" class="blog-title" data-i18n="b3_title">
                 Eliminating SQL N+1 Bottlenecks &amp; Enforcing Server-Side RBAC in Enterprise Systems
               </h3>
               <p class="blog-excerpt" data-i18n="b3_excerpt">
@@ -383,7 +383,7 @@
                 <span class="tag">RBAC</span>
                 <span class="tag">Query Profiling</span>
               </div>
-              <button type="button" class="btn-read-article" data-open-dialog="dialog-article-3" data-i18n="read_full_article">
+              <button type="button" class="btn-read-article" data-open-dialog="dialog-article-3" aria-describedby="blog-title-3" data-i18n="read_full_article">
                 Read Full Technical Article →
               </button>
             </div>
@@ -630,27 +630,27 @@
   <dialog id="dialog-article-1" closedby="any" aria-labelledby="article-1-title">
     <div class="dialog-header">
       <div>
-        <span class="section-eyebrow">TECHNICAL CASE STUDY 01 • LENDLOOP ARCHITECTURE</span>
-        <h2 id="article-1-title" style="font-size: 1.3rem; font-weight: 800;">
+        <span class="section-eyebrow" data-i18n="m1_eyebrow">TECHNICAL CASE STUDY 01 • LENDLOOP ARCHITECTURE</span>
+        <h2 id="article-1-title" style="font-size: 1.3rem; font-weight: 800;" data-i18n="b1_title">
           Securing Bidirectional n8n Webhooks with HMAC-SHA256, Replay Protection, and Idempotent Callbacks
         </h2>
       </div>
       <form method="dialog">
-        <button type="submit" class="btn-close-dialog" autofocus>✕ Close</button>
+        <button type="submit" class="btn-close-dialog" autofocus data-i18n="modal_close">✕ Close</button>
       </form>
     </div>
     <div class="dialog-body">
-      <h3>1. The Architectural Challenge in Event-Driven Automation</h3>
-      <p>
-        When coupling a reactive application backend (Next.js 15 + Convex) with an external workflow orchestrator like <strong>n8n</strong>, webhooks become critical security boundaries. Naive webhook endpoints that rely solely on obscured URLs or static bearer tokens are vulnerable to payload tampering, replay attacks, and duplicate state mutations during network retries.
+      <h3 data-i18n="m1_h1">1. The Architectural Challenge in Event-Driven Automation</h3>
+      <p data-i18n="m1_p1">
+        When coupling a reactive application backend (Next.js 15 + Convex) with an external workflow orchestrator like n8n, webhooks become critical security boundaries. Naive webhook endpoints that rely solely on obscured URLs or static bearer tokens are vulnerable to payload tampering, replay attacks, and duplicate state mutations during network retries.
       </p>
-      <p>
-        In <strong>LendLoop</strong>, every loan request, approval state transition, and daily overdue reminder is orchestrated via containerized n8n workflows that call back into application persistence endpoints. To make this production-grade, I engineered a three-layer defense contract.
+      <p data-i18n="m1_p2">
+        In LendLoop, every loan request, approval state transition, and daily overdue reminder is orchestrated via containerized n8n workflows that call back into application persistence endpoints. To make this production-grade, I engineered a three-layer defense contract.
       </p>
 
-      <h3>2. Bidirectional HMAC-SHA256 Signing with 300-Second Replay Window</h3>
-      <p>
-        Every outbound event from the application to n8n—and every callback from n8n back to the application—includes three cryptographic headers: <code>X-Webhook-Timestamp</code>, <code>X-Webhook-Event-Id</code>, and <code>X-Webhook-Signature</code>. The signature is computed over the concatenation of the Unix timestamp and the raw UTF-8 JSON body:
+      <h3 data-i18n="m1_h2">2. Bidirectional HMAC-SHA256 Signing with 300-Second Replay Window</h3>
+      <p data-i18n="m1_p3">
+        Every outbound event from the application to n8n—and every callback from n8n back to the application—includes three cryptographic headers: X-Webhook-Timestamp, X-Webhook-Event-Id, and X-Webhook-Signature. The signature is computed over the concatenation of the Unix timestamp and the raw UTF-8 JSON body:
       </p>
       <pre class="code-block"><code>// Canonical HMAC-SHA256 Signing &amp; Constant-Time Verification
 const canonicalPayload = `${timestamp}.${rawJsonBody}`;
@@ -671,14 +671,14 @@ const isValid = crypto.timingSafeEqual(
   Buffer.from(expectedSignature, "hex")
 );</code></pre>
 
-      <h3>3. Idempotent Callback Write-Backs &amp; Exponential Backoff</h3>
-      <p>
+      <h3 data-i18n="m1_h3">3. Idempotent Callback Write-Backs &amp; Exponential Backoff</h3>
+      <p data-i18n="m1_p4">
         In distributed workflow engines, network timeouts happen even when the downstream database mutation succeeded. If n8n retries a webhook callback using exponential backoff, a non-idempotent endpoint would log duplicate notifications or corrupt loan state transitions.
       </p>
       <ul>
-        <li><strong>Idempotency Keys:</strong> Every workflow execution step generates a deterministic <code>eventId</code> derived from <code>hash(loanId + transitionType + scheduledDate)</code>.</li>
-        <li><strong>Atomic Deduplication:</strong> The receiving mutation checks the <code>automationEvents</code> table by <code>eventId</code> inside the same transaction before applying state changes. If already processed, it returns <code>200 OK (idempotent_noop: true)</code> so n8n marks the execution green without duplicating side effects.</li>
-        <li><strong>Automated Verification:</strong> A dedicated <strong>Vitest</strong> suite audits all n8n workflow JSON definitions in the repository alongside unit tests for replay rejection, invalid HMAC rejection, and server-side RBAC enforcement.</li>
+        <li data-i18n="m1_li1">Idempotency Keys: Every workflow execution step generates a deterministic eventId derived from hash(loanId + transitionType + scheduledDate).</li>
+        <li data-i18n="m1_li2">Atomic Deduplication: The receiving mutation checks the automationEvents table by eventId inside the same transaction before applying state changes. If already processed, it returns 200 OK (idempotent_noop: true) so n8n marks the execution green without duplicating side effects.</li>
+        <li data-i18n="m1_li3">Automated Verification: A dedicated Vitest suite audits all n8n workflow JSON definitions in the repository alongside unit tests for replay rejection, invalid HMAC rejection, and server-side RBAC enforcement.</li>
       </ul>
     </div>
   </dialog>
@@ -687,30 +687,30 @@ const isValid = crypto.timingSafeEqual(
   <dialog id="dialog-article-2" closedby="any" aria-labelledby="article-2-title">
     <div class="dialog-header">
       <div>
-        <span class="section-eyebrow">TECHNICAL CASE STUDY 02 • FACTURESCAN AI PIPELINE</span>
-        <h2 id="article-2-title" style="font-size: 1.3rem; font-weight: 800;">
+        <span class="section-eyebrow" data-i18n="m2_eyebrow">TECHNICAL CASE STUDY 02 • FACTURESCAN AI PIPELINE</span>
+        <h2 id="article-2-title" style="font-size: 1.3rem; font-weight: 800;" data-i18n="b2_title">
           Building Production AI Document Extraction Pipelines with n8n, Vision LLMs, and RAG
         </h2>
       </div>
       <form method="dialog">
-        <button type="submit" class="btn-close-dialog" autofocus>✕ Close</button>
+        <button type="submit" class="btn-close-dialog" autofocus data-i18n="modal_close">✕ Close</button>
       </form>
     </div>
     <div class="dialog-body">
-      <h3>1. Moving Beyond Fragile Template-Based OCR</h3>
-      <p>
-        Traditional OCR pipelines break whenever a supplier alters invoice column layouts, mixes French and English line items, or scans documents at skewed angles. In <strong>FactureScan</strong>, the goal was to ingest arbitrary vendor invoices (PDF and images) and reliably populate an enterprise <strong>Oracle Database</strong> through a <strong>Spring Boot</strong> REST API.
+      <h3 data-i18n="m2_h1">1. Moving Beyond Fragile Template-Based OCR</h3>
+      <p data-i18n="m2_p1">
+        Traditional OCR pipelines break whenever a supplier alters invoice column layouts, mixes French and English line items, or scans documents at skewed angles. In FactureScan, the goal was to ingest arbitrary vendor invoices (PDF and images) and reliably populate an enterprise Oracle Database through a Spring Boot REST API.
       </p>
 
-      <h3>2. Multi-Stage n8n Orchestration with Claude AI Vision &amp; RAG</h3>
-      <p>
+      <h3 data-i18n="m2_h2">2. Multi-Stage n8n Orchestration with Claude AI Vision &amp; RAG</h3>
+      <p data-i18n="m2_p2">
         Rather than prompting an LLM in a single unstructured pass, I structured the n8n pipeline into four deterministic stages:
       </p>
       <ul>
-        <li><strong>Stage 1 — Ingestion &amp; Normalization:</strong> n8n receives uploaded documents via webhook or watched folder, validates MIME types and file hashes, and normalizes multi-page documents.</li>
-        <li><strong>Stage 2 — Semantic Vendor Disambiguation (RAG &amp; Embeddings):</strong> Extracted header tokens (tax ID, vendor name, IBAN fragment) are embedded and queried against historical vendor profiles so the LLM receives exact supplier context, chart-of-accounts codes, and currency rules.</li>
-        <li><strong>Stage 3 — Structured Vision Extraction:</strong> Claude AI Vision processes the document with a strict JSON Schema contract requiring line-item arrays, tax breakdowns (TVA/HT/TTC), and confidence scores.</li>
-        <li><strong>Stage 4 — Cross-Field Arithmetic &amp; Spring Boot Persistence:</strong> An n8n validation node verifies that <code>sum(lineItems.net) + totalTax === totalGross</code> within floating-point tolerance before posting the validated DTO to Spring Boot and Oracle DB.</li>
+        <li data-i18n="m2_li1">Stage 1 — Ingestion &amp; Normalization: n8n receives uploaded documents via webhook or watched folder, validates MIME types and file hashes, and normalizes multi-page documents.</li>
+        <li data-i18n="m2_li2">Stage 2 — Semantic Vendor Disambiguation (RAG &amp; Embeddings): Extracted header tokens (tax ID, vendor name, IBAN fragment) are embedded and queried against historical vendor profiles so the LLM receives exact supplier context, chart-of-accounts codes, and currency rules.</li>
+        <li data-i18n="m2_li3">Stage 3 — Structured Vision Extraction: Claude AI Vision processes the document with a strict JSON Schema contract requiring line-item arrays, tax breakdowns (TVA/HT/TTC), and confidence scores.</li>
+        <li data-i18n="m2_li4">Stage 4 — Cross-Field Arithmetic &amp; Spring Boot Persistence: An n8n validation node verifies that sum(lineItems.net) + totalTax === totalGross within floating-point tolerance before posting the validated DTO to Spring Boot and Oracle DB.</li>
       </ul>
 
       <pre class="code-block"><code>// Deterministic Cross-Field Validation Node in n8n before Oracle DB Commit
@@ -726,9 +726,9 @@ if (discrepancy &gt; 0.005) {
   };
 }</code></pre>
 
-      <h3>3. Zero-Trust Deployment with Docker Compose &amp; Cloudflare Tunnel</h3>
-      <p>
-        The entire stack—n8n orchestrator, Spring Boot API service, React operator dashboard, and Oracle database—runs inside isolated Docker Compose networks, exposed securely to authorized operators via <strong>Cloudflare Tunnel</strong> without opening inbound firewall ports.
+      <h3 data-i18n="m2_h3">3. Zero-Trust Deployment with Docker Compose &amp; Cloudflare Tunnel</h3>
+      <p data-i18n="m2_p3">
+        The entire stack—n8n orchestrator, Spring Boot API service, React operator dashboard, and Oracle database—runs inside isolated Docker Compose networks, exposed securely to authorized operators via Cloudflare Tunnel without opening inbound firewall ports.
       </p>
     </div>
   </dialog>
@@ -737,37 +737,37 @@ if (discrepancy &gt; 0.005) {
   <dialog id="dialog-article-3" closedby="any" aria-labelledby="article-3-title">
     <div class="dialog-header">
       <div>
-        <span class="section-eyebrow">TECHNICAL CASE STUDY 03 • ENTERPRISE .NET &amp; ORACLE XE</span>
-        <h2 id="article-3-title" style="font-size: 1.3rem; font-weight: 800;">
+        <span class="section-eyebrow" data-i18n="m3_eyebrow">TECHNICAL CASE STUDY 03 • ENTERPRISE .NET &amp; ORACLE XE</span>
+        <h2 id="article-3-title" style="font-size: 1.3rem; font-weight: 800;" data-i18n="b3_title">
           Eliminating SQL N+1 Bottlenecks &amp; Enforcing Server-Side RBAC in Enterprise Systems
         </h2>
       </div>
       <form method="dialog">
-        <button type="submit" class="btn-close-dialog" autofocus>✕ Close</button>
+        <button type="submit" class="btn-close-dialog" autofocus data-i18n="modal_close">✕ Close</button>
       </form>
     </div>
     <div class="dialog-body">
-      <h3>1. Diagnosing N+1 Query Storms in Operations Dashboards</h3>
-      <p>
-        In enterprise operations platforms like <strong>BodyGuard System</strong> and <strong>SecuriManager Pro</strong> (.NET 8, WPF MVVM, Entity Framework Core), operators manage hundreds of security personnel, active client contracts, and shift assignments simultaneously.
+      <h3 data-i18n="m3_h1">1. Diagnosing N+1 Query Storms in Operations Dashboards</h3>
+      <p data-i18n="m3_p1">
+        In enterprise operations platforms like BodyGuard System and SecuriManager Pro (.NET 8, WPF MVVM, Entity Framework Core), operators manage hundreds of security personnel, active client contracts, and shift assignments simultaneously.
       </p>
-      <p>
+      <p data-i18n="m3_p2">
         During performance diagnostics, loading the master schedule view triggered over 400 sequential SQL round-trips due to lazy-loaded navigation properties accessed inside UI data-binding loops—causing noticeable UI thread freezes.
       </p>
 
-      <h3>2. Query Projection, AsNoTracking, and Hybrid Oracle XE / SQLite Persistence</h3>
-      <p>
+      <h3 data-i18n="m3_h2">2. Query Projection, AsNoTracking, and Hybrid Oracle XE / SQLite Persistence</h3>
+      <p data-i18n="m3_p3">
         I refactored the data access layer around three core database engineering principles:
       </p>
       <ul>
-        <li><strong>Explicit Eager Loading &amp; DTO Projections:</strong> Replaced lazy iteration with single-query projections (<code>.Select()</code> and split-query <code>.Include()</code> where appropriate) combined with <code>.AsNoTracking()</code> for read-heavy dashboards, cutting query execution time by over 85%.</li>
-        <li><strong>Cross-Provider Schema Compatibility (Oracle XE &amp; SQLite):</strong> Engineered deterministic EF Core entity configurations mapping <code>Guid</code> primary keys to Oracle <code>RAW(16)</code> columns while maintaining seamless local offline fallback on SQLite.</li>
-        <li><strong>Async Command Dispatching:</strong> Moved all database I/O and backup/export tasks off the UI dispatcher thread with cancellation tokens and structured error telemetry.</li>
+        <li data-i18n="m3_li1">Explicit Eager Loading &amp; DTO Projections: Replaced lazy iteration with single-query projections (.Select() and split-query .Include() where appropriate) combined with .AsNoTracking() for read-heavy dashboards, cutting query execution time by over 85%.</li>
+        <li data-i18n="m3_li2">Cross-Provider Schema Compatibility (Oracle XE &amp; SQLite): Engineered deterministic EF Core entity configurations mapping Guid primary keys to Oracle RAW(16) columns while maintaining seamless local offline fallback on SQLite.</li>
+        <li data-i18n="m3_li3">Async Command Dispatching: Moved all database I/O and backup/export tasks off the UI dispatcher thread with cancellation tokens and structured error telemetry.</li>
       </ul>
 
       <pre class="code-block"><code>// Optimized Single-Roundtrip Projection with AsNoTracking in EF Core (.NET 8)
 public async Task&lt;IReadOnlyList&lt;ShiftAssignmentDto&gt;&gt; GetActiveRosterAsync(
-    DateOnlydutyDate, CancellationToken ct)
+    DateOnly dutyDate, CancellationToken ct)
 {
     return await _dbContext.ShiftAssignments
         .AsNoTracking()
@@ -785,8 +785,8 @@ public async Task&lt;IReadOnlyList&lt;ShiftAssignmentDto&gt;&gt; GetActiveRoster
         .ToListAsync(ct);
 }</code></pre>
 
-      <h3>3. Granular RBAC &amp; Immutable Audit Trails</h3>
-      <p>
+      <h3 data-i18n="m3_h3">3. Granular RBAC &amp; Immutable Audit Trails</h3>
+      <p data-i18n="m3_p4">
         Every sensitive operation—modifying contract rates, overriding shift rosters, or exporting payroll summaries—is guarded by role policies (Admin, Operations Manager, Supervisor, Auditor) and automatically records an immutable audit entry with actor identity, UTC timestamp, and before/after state snapshots.
       </p>
     </div>

@@ -101,7 +101,62 @@ const I18N = {
     contact_eyebrow: "Direct Contact & Links",
     contact_title: "Let's Build Resilient AI & Automation Systems",
     contact_subtitle:
-      "Reach out directly via email or phone, explore my source repositories on GitHub, or download my English and French resumes."
+      "Reach out directly via email or phone, explore my source repositories on GitHub, or download my English and French resumes.",
+    modal_close: "✕ Close",
+    m1_eyebrow: "TECHNICAL CASE STUDY 01 • LENDLOOP ARCHITECTURE",
+    m1_h1: "1. The Architectural Challenge in Event-Driven Automation",
+    m1_p1:
+      "When coupling a reactive application backend (Next.js 15 + Convex) with an external workflow orchestrator like n8n, webhooks become critical security boundaries. Naive webhook endpoints that rely solely on obscured URLs or static bearer tokens are vulnerable to payload tampering, replay attacks, and duplicate state mutations during network retries.",
+    m1_p2:
+      "In LendLoop, every loan request, approval state transition, and daily overdue reminder is orchestrated via containerized n8n workflows that call back into application persistence endpoints. To make this production-grade, I engineered a three-layer defense contract.",
+    m1_h2: "2. Bidirectional HMAC-SHA256 Signing with 300-Second Replay Window",
+    m1_p3:
+      "Every outbound event from the application to n8n—and every callback from n8n back to the application—includes three cryptographic headers: X-Webhook-Timestamp, X-Webhook-Event-Id, and X-Webhook-Signature. The signature is computed over the concatenation of the Unix timestamp and the raw UTF-8 JSON body:",
+    m1_h3: "3. Idempotent Callback Write-Backs & Exponential Backoff",
+    m1_p4:
+      "In distributed workflow engines, network timeouts happen even when the downstream database mutation succeeded. If n8n retries a webhook callback using exponential backoff, a non-idempotent endpoint would log duplicate notifications or corrupt loan state transitions.",
+    m1_li1:
+      "Idempotency Keys: Every workflow execution step generates a deterministic eventId derived from hash(loanId + transitionType + scheduledDate).",
+    m1_li2:
+      "Atomic Deduplication: The receiving mutation checks the automationEvents table by eventId inside the same transaction before applying state changes. If already processed, it returns 200 OK (idempotent_noop: true) so n8n marks the execution green without duplicating side effects.",
+    m1_li3:
+      "Automated Verification: A dedicated Vitest suite audits all n8n workflow JSON definitions in the repository alongside unit tests for replay rejection, invalid HMAC rejection, and server-side RBAC enforcement.",
+    m2_eyebrow: "TECHNICAL CASE STUDY 02 • FACTURESCAN AI PIPELINE",
+    m2_h1: "1. Moving Beyond Fragile Template-Based OCR",
+    m2_p1:
+      "Traditional OCR pipelines break whenever a supplier alters invoice column layouts, mixes French and English line items, or scans documents at skewed angles. In FactureScan, the goal was to ingest arbitrary vendor invoices (PDF and images) and reliably populate an enterprise Oracle Database through a Spring Boot REST API.",
+    m2_h2: "2. Multi-Stage n8n Orchestration with Claude AI Vision & RAG",
+    m2_p2:
+      "Rather than prompting an LLM in a single unstructured pass, I structured the n8n pipeline into four deterministic stages:",
+    m2_li1:
+      "Stage 1 — Ingestion & Normalization: n8n receives uploaded documents via webhook or watched folder, validates MIME types and file hashes, and normalizes multi-page documents.",
+    m2_li2:
+      "Stage 2 — Semantic Vendor Disambiguation (RAG & Embeddings): Extracted header tokens (tax ID, vendor name, IBAN fragment) are embedded and queried against historical vendor profiles so the LLM receives exact supplier context, chart-of-accounts codes, and currency rules.",
+    m2_li3:
+      "Stage 3 — Structured Vision Extraction: Claude AI Vision processes the document with a strict JSON Schema contract requiring line-item arrays, tax breakdowns (TVA/HT/TTC), and confidence scores.",
+    m2_li4:
+      "Stage 4 — Cross-Field Arithmetic & Spring Boot Persistence: An n8n validation node verifies that sum(lineItems.net) + totalTax === totalGross within floating-point tolerance before posting the validated DTO to Spring Boot and Oracle DB.",
+    m2_h3: "3. Zero-Trust Deployment with Docker Compose & Cloudflare Tunnel",
+    m2_p3:
+      "The entire stack—n8n orchestrator, Spring Boot API service, React operator dashboard, and Oracle database—runs inside isolated Docker Compose networks, exposed securely to authorized operators via Cloudflare Tunnel without opening inbound firewall ports.",
+    m3_eyebrow: "TECHNICAL CASE STUDY 03 • ENTERPRISE .NET & ORACLE XE",
+    m3_h1: "1. Diagnosing N+1 Query Storms in Operations Dashboards",
+    m3_p1:
+      "In enterprise operations platforms like BodyGuard System and SecuriManager Pro (.NET 8, WPF MVVM, Entity Framework Core), operators manage hundreds of security personnel, active client contracts, and shift assignments simultaneously.",
+    m3_p2:
+      "During performance diagnostics, loading the master schedule view triggered over 400 sequential SQL round-trips due to lazy-loaded navigation properties accessed inside UI data-binding loops—causing noticeable UI thread freezes.",
+    m3_h2: "2. Query Projection, AsNoTracking, and Hybrid Oracle XE / SQLite Persistence",
+    m3_p3:
+      "I refactored the data access layer around three core database engineering principles:",
+    m3_li1:
+      "Explicit Eager Loading & DTO Projections: Replaced lazy iteration with single-query projections (.Select() and split-query .Include() where appropriate) combined with .AsNoTracking() for read-heavy dashboards, cutting query execution time by over 85%.",
+    m3_li2:
+      "Cross-Provider Schema Compatibility (Oracle XE & SQLite): Engineered deterministic EF Core entity configurations mapping Guid primary keys to Oracle RAW(16) columns while maintaining seamless local offline fallback on SQLite.",
+    m3_li3:
+      "Async Command Dispatching: Moved all database I/O and backup/export tasks off the UI dispatcher thread with cancellation tokens and structured error telemetry.",
+    m3_h3: "3. Granular RBAC & Immutable Audit Trails",
+    m3_p4:
+      "Every sensitive operation—modifying contract rates, overriding shift rosters, or exporting payroll summaries—is guarded by role policies (Admin, Operations Manager, Supervisor, Auditor) and automatically records an immutable audit entry with actor identity, UTC timestamp, and before/after state snapshots."
   },
   fr: {
     nav_projects: "Projets",
@@ -204,7 +259,62 @@ const I18N = {
     contact_eyebrow: "Contact Direct & Liens",
     contact_title: "Construisons des Systèmes IA & d'Automatisation Résilients",
     contact_subtitle:
-      "Contactez-moi directement par e-mail ou téléphone, explorez mes dépôts GitHub ou téléchargez mon CV en version anglaise ou française."
+      "Contactez-moi directement par e-mail ou téléphone, explorez mes dépôts GitHub ou téléchargez mon CV en version anglaise ou française.",
+    modal_close: "✕ Fermer",
+    m1_eyebrow: "ÉTUDE DE CAS TECHNIQUE 01 • ARCHITECTURE LENDLOOP",
+    m1_h1: "1. Le Défi Architectural de l'Automatisation Événementielle",
+    m1_p1:
+      "Lors du couplage d'un backend applicatif réactif (Next.js 15 + Convex) avec un orchestrateur de workflows externe comme n8n, les webhooks deviennent des frontières de sécurité critiques. Les points de terminaison naïfs reposant uniquement sur des URLs obscurcies ou des jetons statiques sont vulnérables à la falsification de charge utile, aux attaques par rejeu et aux mutations d'état dupliquées lors des reprises réseau.",
+    m1_p2:
+      "Dans LendLoop, chaque demande de prêt, transition d'état d'approbation et relance quotidienne de retard est orchestrée via des workflows n8n conteneurisés qui rappellent les APIs de persistance. Pour garantir une fiabilité de niveau production, j'ai conçu un contrat de défense à trois niveaux.",
+    m1_h2: "2. Signature Bidirectionnelle HMAC-SHA256 avec Fenêtre Anti-Rejeu de 300 Secondes",
+    m1_p3:
+      "Chaque événement sortant de l'application vers n8n — et chaque callback de n8n vers l'application — inclut trois en-têtes cryptographiques : X-Webhook-Timestamp, X-Webhook-Event-Id et X-Webhook-Signature. La signature est calculée sur la concaténation de l'horodatage Unix et du corps JSON UTF-8 brut :",
+    m1_h3: "3. Callbacks Idempotents & Backoff Exponentiel",
+    m1_p4:
+      "Dans les moteurs de workflows distribués, des délais d'attente réseau surviennent même lorsque la mutation en base de données a réussi. Si n8n réessaie un callback webhook avec un backoff exponentiel, un endpoint non idempotent enregistrerait des notifications en double ou corromprait les transitions d'état.",
+    m1_li1:
+      "Clés d'Idempotence : Chaque étape d'exécution génère un eventId déterministe dérivé de hash(loanId + transitionType + scheduledDate).",
+    m1_li2:
+      "Déduplication Atomique : La mutation réceptrice vérifie la table automationEvents par eventId dans la même transaction avant d'appliquer les changements d'état. Si l'événement a déjà été traité, elle retourne 200 OK (idempotent_noop: true) afin que n8n valide l'exécution sans dupliquer les effets de bord.",
+    m1_li3:
+      "Vérification Automatisée : Une suite dédiée sous Vitest audite toutes les définitions JSON des workflows n8n du dépôt ainsi que les tests unitaires de rejet anti-rejeu, de validation HMAC et de contrôle d'accès RBAC serveur.",
+    m2_eyebrow: "ÉTUDE DE CAS TECHNIQUE 02 • PIPELINE IA FACTURESCAN",
+    m2_h1: "1. Dépasser les Limites de l'OCR Traditionnel Basé sur des Modèles",
+    m2_p1:
+      "Les pipelines OCR classiques échouent dès qu'un fournisseur modifie la disposition des colonnes d'une facture, mélange des lignes en français et en anglais, ou numérise des documents inclinés. Dans FactureScan, l'objectif était d'ingérer des factures fournisseurs arbitraires (PDF et images) et d'alimenter de manière fiable une base Oracle Database via une API REST Spring Boot.",
+    m2_h2: "2. Orchestration n8n Multi-Étapes avec Claude AI Vision & RAG",
+    m2_p2:
+      "Plutôt que d'interroger un LLM en une seule passe non structurée, j'ai structuré le pipeline n8n en quatre étapes déterministes :",
+    m2_li1:
+      "Étape 1 — Ingestion & Normalisation : n8n reçoit les documents par webhook ou dossier surveillé, valide les types MIME et empreintes cryptographiques, et normalise les PDF multi-pages.",
+    m2_li2:
+      "Étape 2 — Désambiguïsation Sémantique des Fournisseurs (RAG & Embeddings) : Les jetons d'en-tête extraits (matricule fiscal, nom du fournisseur, fragment d'IBAN) sont vectorisés et comparés aux profils historiques afin d'injecter le contexte fournisseur exact, le plan comptable et les règles de devise.",
+    m2_li3:
+      "Étape 3 — Extraction Vision Structurée : Claude AI Vision analyse le document selon un contrat JSON Schema strict exigeant le tableau des lignes de facturation, la ventilation fiscale (TVA/HT/TTC) et les scores de confiance.",
+    m2_li4:
+      "Étape 4 — Validation Arithmétique Croisée & Persistance Spring Boot : Un nœud de validation n8n vérifie que sum(lineItems.net) + totalTax === totalGross avec tolérance décimale avant de transmettre le DTO validé à Spring Boot et Oracle DB.",
+    m2_h3: "3. Déploiement Zero-Trust avec Docker Compose & Cloudflare Tunnel",
+    m2_p3:
+      "L'ensemble de la stack — orchestrateur n8n, service API Spring Boot, tableau de bord React et base Oracle — s'exécute dans des réseaux Docker Compose isolés, exposés de manière sécurisée aux opérateurs autorisés via Cloudflare Tunnel sans ouverture de ports entrants sur le pare-feu.",
+    m3_eyebrow: "ÉTUDE DE CAS TECHNIQUE 03 • ENTREPRISE .NET & ORACLE XE",
+    m3_h1: "1. Diagnostic des Tempêtes de Requêtes SQL N+1 dans les Tableaux de Bord",
+    m3_p1:
+      "Dans les plateformes d'exploitation d'entreprise telles que BodyGuard System et SecuriManager Pro (.NET 8, WPF MVVM, Entity Framework Core), les opérateurs gèrent simultanément des centaines d'agents, de contrats clients actifs et d'affectations de garde.",
+    m3_p2:
+      "Lors du profilage de performance, le chargement de la vue principale du planning déclenchait plus de 400 allers-retours SQL séquentiels en raison de propriétés de navigation évaluées paresseusement (lazy loading) dans les boucles de liaison UI — provoquant des blocages visibles du thread graphique.",
+    m3_h2: "2. Projection de Requêtes, AsNoTracking et Persistance Hybride Oracle XE / SQLite",
+    m3_p3:
+      "J'ai refactorisé la couche d'accès aux données autour de trois principes d'ingénierie de base de données :",
+    m3_li1:
+      "Chargement Explicite & Projections DTO : Remplacement des itérations paresseuses par des projections en requête unique (.Select() et .Include() en requête scindée) combinées à .AsNoTracking() pour les vues en lecture seule, réduisant le temps d'exécution de plus de 85 %.",
+    m3_li2:
+      "Compatibilité de Schéma Multi-Fournisseurs (Oracle XE & SQLite) : Configuration déterministe des entités EF Core mappant les clés primaires Guid vers des colonnes Oracle RAW(16) tout en conservant un mode hors-ligne transparent sur SQLite local.",
+    m3_li3:
+      "Exécution Asynchrone Non Bloquante : Déportation de toutes les entrées/sorties base de données et tâches de sauvegarde/export hors du thread UI avec jetons d'annulation (CancellationToken) et télémétrie d'erreurs structurée.",
+    m3_h3: "3. RBAC Granulaire & Pistes d'Audit Immuables",
+    m3_p4:
+      "Chaque opération sensible — modification des tarifs contractuels, réaffectation de planning ou export des états de paie — est protégée par des politiques de rôles (Admin, Responsable Exploitation, Superviseur, Auditeur) et enregistre automatiquement une entrée d'audit immuable avec identité de l'acteur, horodatage UTC et instantanés avant/après."
   }
 };
 
@@ -271,8 +381,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      filterBtns.forEach((b) => b.classList.remove("active"));
+      filterBtns.forEach((b) => {
+        b.classList.remove("active");
+        b.setAttribute("aria-pressed", "false");
+      });
       btn.classList.add("active");
+      btn.setAttribute("aria-pressed", "true");
       const filter = btn.getAttribute("data-filter");
 
       projectCards.forEach((card) => {
