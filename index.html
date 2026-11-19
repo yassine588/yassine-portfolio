@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- MANDATORY: Declare support for both light and dark themes -->
+  <meta name="color-scheme" content="light dark">
+  <title>Yassine Karfouh — AI &amp; Automation Engineer | Portfolio &amp; Engineering Blog</title>
+  <meta name="description" content="Portfolio &amp; Engineering Blog of Yassine Karfouh — AI &amp; Automation Engineer, Full Stack &amp; Enterprise Integration Developer specializing in n8n workflows, LLM/RAG pipelines, secure webhooks (HMAC-SHA256), and enterprise systems.">
+  <meta property="og:title" content="Yassine Karfouh — AI &amp; Automation Engineer | Portfolio &amp; Blog">
+  <meta property="og:description" content="Event-driven workflow orchestration (n8n), AI/LLM document pipelines (Claude AI, RAG, OCR), secure REST/webhook contracts (HMAC-SHA256, OIDC/JWT, RBAC), and resilient full-stack engineering.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Sticky Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="#top" class="brand-logo" aria-label="Yassine Karfouh Home">
+        <span class="brand-monogram">YK</span>
+        <span>Yassine Karfouh</span>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+          <li><a href="#blog" data-i18n="nav_blog">Engineering Blog</a></li>
+          <li><a href="#skills" data-i18n="nav_skills">Architecture &amp; Skills</a></li>
+          <li><a href="#credentials" data-i18n="nav_credentials">Experience &amp; Certifications</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-controls">
+        <button type="button" id="langToggle" class="btn-control" aria-label="Switch Language (English / Français)">
+          <span id="langLabel">FR 🇫🇷</span>
+        </button>
+        <button type="button" id="themeToggle" class="btn-control" aria-label="Toggle Light/Dark Color Scheme">
+          <span id="themeIcon">◐</span>
+          <span id="themeLabel" data-i18n="theme_btn">Theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="status-pill">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span data-i18n="hero_badge">Available for AI, Automation &amp; Enterprise Integration Roles</span>
+          </div>
+          <h1 class="hero-title">Yassine Karfouh</h1>
+          <p class="hero-role" data-i18n="hero_role">
+            AI &amp; Automation Engineer | Full Stack &amp; Enterprise Integration Developer
+          </p>
+          <p class="hero-summary" data-i18n="hero_summary">
+            Hands-on engineer specializing in designing, implementing, and operating automated event-driven workflows (n8n), enterprise API integrations, AI/LLM document pipelines (RAG, OCR, embeddings), and reliable full-stack systems. Strong focus on secure REST/webhook contracts (HMAC-SHA256, OIDC/JWT, RBAC), idempotency, and production observability.
+          </p>
+
+          <div class="hero-actions">
+            <a href="CV_Yassine_Karfouh_EN.pdf" download class="btn btn-primary">
+              <span>⬇</span>
+              <span data-i18n="btn_cv_en">Download CV (EN)</span>
+            </a>
+            <a href="CV_Yassine_Karfouh_FR.pdf" download class="btn btn-outline">
+              <span>⬇</span>
+              <span data-i18n="btn_cv_fr">Télécharger CV (FR)</span>
+            </a>
+            <a href="#blog" class="btn btn-outline" data-i18n="btn_read_blog">
+              Read Engineering Blog →
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <span class="hero-meta-item">📍 <span data-i18n="hero_location">Tunis, Tunisia</span></span>
+            <span class="hero-meta-item">✉️ <a href="mailto:yassine.karfou7@gmail.com">yassine.karfou7@gmail.com</a></span>
+            <span class="hero-meta-item">📞 <a href="tel:+21696236615">+216 96 236 615</a></span>
+            <span class="hero-meta-item">💻 <a href="https://github.com/yassine588" target="_blank" rel="noopener">github.com/yassine588</a></span>
+            <span class="hero-meta-item">🔗 <a href="https://linkedin.com/in/yassine-karfouh" target="_blank" rel="noopener">linkedin.com/in/yassine-karfouh</a></span>
+          </div>
+        </div>
+
+        <!-- Architecture Blueprint Telemetry Card -->
+        <aside class="arch-card" aria-label="Automation Pipeline Architecture Preview">
+          <div class="arch-header">
+            <div class="window-dots" aria-hidden="true">
+              <span class="window-dot dot-red"></span>
+              <span class="window-dot dot-amber"></span>
+              <span class="window-dot dot-green"></span>
+            </div>
+            <span class="arch-title">n8n-ai-orchestrator :: production-blueprint</span>
+          </div>
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <div class="pipeline-step-header">
+                <span>01. Signed Webhook Ingress</span>
+                <span class="pipeline-badge">HMAC-SHA256</span>
+              </div>
+              <p class="pipeline-desc" data-i18n="pipe_1">
+                Constant-time signature verification, 300s timestamp replay window, and strict JSON payload schema validation.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <div class="pipeline-step-header">
+                <span>02. n8n Event &amp; AI Orchestration</span>
+                <span class="pipeline-badge">Claude AI + RAG</span>
+              </div>
+              <p class="pipeline-desc" data-i18n="pipe_2">
+                Vision OCR extraction, semantic embeddings lookup, structured JSON contract enforcement, and exponential backoff retries.
+              </p>
+            </div>
+            <div class="pipeline-step">
+              <div class="pipeline-step-header">
+                <span>03. Idempotent Persistence &amp; Audit</span>
+                <span class="pipeline-badge">RBAC + Telemetry</span>
+              </div>
+              <p class="pipeline-desc" data-i18n="pipe_3">
+                Deduplicated callback write-backs to Convex / Oracle DB / Spring Boot with structured audit logging and incident routing.
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow" data-i18n="proj_eyebrow">Production Systems &amp; Integrations</span>
+          <h2 class="section-title" data-i18n="proj_title">Featured AI, Automation &amp; Enterprise Projects</h2>
+          <p class="section-subtitle" data-i18n="proj_subtitle">
+            Architectures built for reliability: event-driven workflow automation, vision-LLM document extraction, strict RBAC security, and real-time telemetry.
+          </p>
+        </div>
+
+        <div class="filter-bar" role="tablist" aria-label="Filter projects by domain">
+          <button type="button" class="filter-btn active" data-filter="all" data-i18n="filter_all">All Systems (5)</button>
+          <button type="button" class="filter-btn" data-filter="automation" data-i18n="filter_auto">n8n &amp; Workflow Automation</button>
+          <button type="button" class="filter-btn" data-filter="ai" data-i18n="filter_ai">AI, LLM &amp; Computer Vision</button>
+          <button type="button" class="filter-btn" data-filter="enterprise" data-i18n="filter_ent">Enterprise RBAC &amp; Full Stack</button>
+        </div>
+
+        <div class="cards-grid" id="projectsGrid">
+          <!-- Project 1: LendLoop -->
+          <article class="card" data-category="automation enterprise">
+            <div>
+              <span class="card-category" data-i18n="p1_cat">Workflow Orchestration &amp; Webhook Security</span>
+              <h3 class="card-title">LendLoop</h3>
+              <p class="card-subtitle" data-i18n="p1_sub">Automated Workflow &amp; Secure Webhook Integration Platform</p>
+              <ul class="card-list">
+                <li data-i18n="p1_b1">Architected an event-driven platform integrating a reactive Convex backend with containerized n8n workflows for real-time request notifications, scheduled daily overdue reminders, and automated incident handling.</li>
+                <li data-i18n="p1_b2">Engineered bidirectional HMAC-SHA256 webhook signing with 300-second replay protection, exponential backoff retries, idempotent callback write-backs, and real-time automation health timelines.</li>
+                <li data-i18n="p1_b3">Enforced server-side Role-Based Access Control (RBAC), strict API data-minimization contracts, and automated Vitest suites auditing security, RBAC, and workflow JSON definitions.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="tag-list">
+                <span class="tag">n8n</span>
+                <span class="tag">Next.js 15</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Convex</span>
+                <span class="tag">Clerk (OIDC/JWT)</span>
+                <span class="tag">HMAC-SHA256</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Vitest</span>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/yassine588/lendloop" target="_blank" rel="noopener">GitHub Repository ↗</a>
+                <button type="button" class="btn-read-article" data-open-dialog="dialog-article-1" data-i18n="p1_case_btn">Read Security Case Study</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: FactureScan -->
+          <article class="card" data-category="automation ai enterprise">
+            <div>
+              <span class="card-category" data-i18n="p2_cat">AI Document Processing &amp; RAG Pipeline</span>
+              <h3 class="card-title">FactureScan</h3>
+              <p class="card-subtitle" data-i18n="p2_sub">Automated AI Document &amp; Invoice Processing Pipeline</p>
+              <ul class="card-list">
+                <li data-i18n="p2_b1">Designed an end-to-end automated ingestion and OCR extraction workflow in n8n using Claude AI vision models and RAG/embedding pipelines to transform unstructured invoices into validated JSON contracts.</li>
+                <li data-i18n="p2_b2">Integrated Spring Boot REST APIs and Oracle DB persistence with automated schema validation, error-recovery routing, Docker Compose containerization, and zero-trust exposure via Cloudflare Tunnel.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="tag-list">
+                <span class="tag">n8n</span>
+                <span class="tag">Claude AI (Vision/LLM)</span>
+                <span class="tag">RAG &amp; Embeddings</span>
+                <span class="tag">Spring Boot</span>
+                <span class="tag">React</span>
+                <span class="tag">Oracle DB</span>
+                <span class="tag">Docker Compose</span>
+                <span class="tag">Cloudflare Tunnel</span>
+              </div>
+              <div class="card-footer">
+                <span style="color: var(--text-muted);" data-i18n="p2_arch_label">Enterprise AI Pipeline</span>
+                <button type="button" class="btn-read-article" data-open-dialog="dialog-article-2" data-i18n="p2_case_btn">Read AI Pipeline Study</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: BodyGuard System & SecuriManager Pro -->
+          <article class="card" data-category="enterprise">
+            <div>
+              <span class="card-category" data-i18n="p3_cat">Enterprise Operations &amp; Database Engineering</span>
+              <h3 class="card-title">BodyGuard System &amp; SecuriManager Pro</h3>
+              <p class="card-subtitle" data-i18n="p3_sub">Enterprise Operations, Audit &amp; RBAC Platforms</p>
+              <ul class="card-list">
+                <li data-i18n="p3_b1">Built offline-first enterprise applications managing security personnel, duty schedules, and contracts with granular RBAC, structured audit timestamps, and automated backup/recovery routines.</li>
+                <li data-i18n="p3_b2">Diagnosed and resolved SQL N+1 query bottlenecks and UI thread-blocking issues; engineered resilient EF Core migrations targeting Oracle XE (RAW(16) GUID mapping) and local SQLite stores.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="tag-list">
+                <span class="tag">C#</span>
+                <span class="tag">.NET 8</span>
+                <span class="tag">WPF (MVVM)</span>
+                <span class="tag">Entity Framework Core</span>
+                <span class="tag">Oracle XE</span>
+                <span class="tag">SQLite</span>
+                <span class="tag">RBAC</span>
+                <span class="tag">Audit Logging</span>
+              </div>
+              <div class="card-footer">
+                <span style="color: var(--text-muted);" data-i18n="p3_arch_label">Hybrid Oracle XE / SQLite</span>
+                <button type="button" class="btn-read-article" data-open-dialog="dialog-article-3" data-i18n="p3_case_btn">Read DB &amp; RBAC Study</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: Corriger & Traduire -->
+          <article class="card" data-category="enterprise automation">
+            <div>
+              <span class="card-category" data-i18n="p4_cat">Multilingual SaaS &amp; Document Workflows</span>
+              <h3 class="card-title">Corriger &amp; Traduire</h3>
+              <p class="card-subtitle" data-i18n="p4_sub">Multilingual Linguistic &amp; Document Workflow Platform</p>
+              <ul class="card-list">
+                <li data-i18n="p4_b1">Architected a high-performance quadrilingual platform (Arabic, French, English, Hebrew) with automated client-side PDF document generation pipelines and bidirectional RTL/LTR layout engines.</li>
+                <li data-i18n="p4_b2">Implemented dynamic i18n routing, automated linguistic processing workflows, and Core Web Vitals optimization for fast interactive document rendering.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="tag-list">
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">i18n (RTL/LTR)</span>
+                <span class="tag">PDF Pipelines</span>
+                <span class="tag">Vite</span>
+                <span class="tag">Tailwind CSS</span>
+              </div>
+              <div class="card-footer">
+                <a href="https://corriger-et-traduire.com" target="_blank" rel="noopener" data-i18n="p4_live_link">Live Production Site (corriger-et-traduire.com) ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 5: Life Guard IoT Telemetry & Computer Vision AI -->
+          <article class="card" data-category="ai automation">
+            <div>
+              <span class="card-category" data-i18n="p5_cat">Deep Learning, Computer Vision &amp; IoT Telemetry</span>
+              <h3 class="card-title">Life Guard IoT &amp; Computer Vision AI</h3>
+              <p class="card-subtitle" data-i18n="p5_sub">Real-Time Wearable Telemetry &amp; MobileNetV2 Vision Classifiers</p>
+              <ul class="card-list">
+                <li data-i18n="p5_b1">Engineered Node.js REST APIs for real-time wearable health telemetry ingestion (heart rate, SpO2, blood pressure, GPS) with automated anomaly detection and emergency alert routing.</li>
+                <li data-i18n="p5_b2">Trained and deployed Python/TensorFlow CNN classifiers (MobileNetV2 transfer learning &amp; OpenCV) for real-time video inference in Shop Win and Smart Trash classification systems.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="tag-list">
+                <span class="tag">Python</span>
+                <span class="tag">TensorFlow</span>
+                <span class="tag">CNN (MobileNetV2)</span>
+                <span class="tag">OpenCV</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">REST APIs</span>
+                <span class="tag">IoT Sensor Streams</span>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/yassine588" target="_blank" rel="noopener">GitHub Profile ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Blog / Technical Articles Section -->
+    <section id="blog" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow" data-i18n="blog_eyebrow">Engineering Blog &amp; Technical Case Studies</span>
+          <h2 class="section-title" data-i18n="blog_title">Deep Dives in Automation, AI Pipelines &amp; System Reliability</h2>
+          <p class="section-subtitle" data-i18n="blog_subtitle">
+            Architectural notes and production post-mortems on securing webhook integrations, orchestrating Vision-LLM extraction pipelines, and eliminating database bottlenecks.
+          </p>
+        </div>
+
+        <div class="blog-grid">
+          <!-- Blog Post 1 -->
+          <article class="blog-card">
+            <div>
+              <div class="blog-meta">
+                <span>ARTICLE 01</span>
+                <span>•</span>
+                <span>n8n / Webhooks / Security</span>
+              </div>
+              <h3 class="blog-title" data-i18n="b1_title">
+                Securing Bidirectional n8n Webhooks with HMAC-SHA256, Replay Protection, and Idempotent Callbacks
+              </h3>
+              <p class="blog-excerpt" data-i18n="b1_excerpt">
+                How to prevent spoofed automation triggers, replay attacks, and duplicate state mutations when connecting reactive backends (Next.js / Convex) to containerized n8n workflows.
+              </p>
+            </div>
+            <div>
+              <div class="tag-list">
+                <span class="tag">HMAC-SHA256</span>
+                <span class="tag">n8n</span>
+                <span class="tag">Idempotency</span>
+                <span class="tag">Vitest</span>
+              </div>
+              <button type="button" class="btn-read-article" data-open-dialog="dialog-article-1" data-i18n="read_full_article">
+                Read Full Technical Article →
+              </button>
+            </div>
+          </article>
+
+          <!-- Blog Post 2 -->
+          <article class="blog-card">
+            <div>
+              <div class="blog-meta">
+                <span>ARTICLE 02</span>
+                <span>•</span>
+                <span>AI / LLM / RAG / Spring Boot</span>
+              </div>
+              <h3 class="blog-title" data-i18n="b2_title">
+                Building Production AI Document Extraction Pipelines with n8n, Vision LLMs, and RAG
+              </h3>
+              <p class="blog-excerpt" data-i18n="b2_excerpt">
+                Transforming unstructured multi-layout invoices into deterministic JSON data contracts using Claude Vision, vector embeddings for vendor disambiguation, and Spring Boot + Oracle DB validation.
+              </p>
+            </div>
+            <div>
+              <div class="tag-list">
+                <span class="tag">Claude AI Vision</span>
+                <span class="tag">RAG &amp; Embeddings</span>
+                <span class="tag">n8n</span>
+                <span class="tag">Spring Boot</span>
+              </div>
+              <button type="button" class="btn-read-article" data-open-dialog="dialog-article-2" data-i18n="read_full_article">
+                Read Full Technical Article →
+              </button>
+            </div>
+          </article>
+
+          <!-- Blog Post 3 -->
+          <article class="blog-card">
+            <div>
+              <div class="blog-meta">
+                <span>ARTICLE 03</span>
+                <span>•</span>
+                <span>.NET 8 / Oracle XE / RBAC</span>
+              </div>
+              <h3 class="blog-title" data-i18n="b3_title">
+                Eliminating SQL N+1 Bottlenecks &amp; Enforcing Server-Side RBAC in Enterprise Systems
+              </h3>
+              <p class="blog-excerpt" data-i18n="b3_excerpt">
+                Lessons learned from profiling Entity Framework Core queries across Oracle XE and SQLite, mapping RAW(16) GUIDs cleanly, and enforcing zero-trust Role-Based Access Control with audit trails.
+              </p>
+            </div>
+            <div>
+              <div class="tag-list">
+                <span class="tag">EF Core</span>
+                <span class="tag">Oracle XE</span>
+                <span class="tag">RBAC</span>
+                <span class="tag">Query Profiling</span>
+              </div>
+              <button type="button" class="btn-read-article" data-open-dialog="dialog-article-3" data-i18n="read_full_article">
+                Read Full Technical Article →
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Skills Matrix Section -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow" data-i18n="skills_eyebrow">Core Competencies</span>
+          <h2 class="section-title" data-i18n="skills_title">Architecture &amp; Technical Stack</h2>
+          <p class="section-subtitle" data-i18n="skills_subtitle">
+            End-to-end engineering across workflow orchestration, generative AI integration, backend APIs, relational/reactive databases, and DevOps observability.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-box">
+            <h3 class="skill-box-title" data-i18n="sk_cat_1">⚡ Automation &amp; API Integration</h3>
+            <div class="tag-list">
+              <span class="tag">n8n Workflows</span>
+              <span class="tag">Event-Driven Orchestration</span>
+              <span class="tag">Node-RED / Low-Code Patterns</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">Webhooks (HMAC-SHA256)</span>
+              <span class="tag">JSON / XML Contracts</span>
+              <span class="tag">Cron Scheduling</span>
+              <span class="tag">Exponential Backoff</span>
+              <span class="tag">Idempotent Pipelines</span>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <h3 class="skill-box-title" data-i18n="sk_cat_2">🧠 AI &amp; Data Engineering</h3>
+            <div class="tag-list">
+              <span class="tag">Claude AI / OpenAI APIs</span>
+              <span class="tag">RAG Pipelines &amp; Embeddings</span>
+              <span class="tag">AI Agents &amp; Tool Calling</span>
+              <span class="tag">OCR &amp; Vision Extraction</span>
+              <span class="tag">Prompt Engineering</span>
+              <span class="tag">Deep Learning (DNN / CNN)</span>
+              <span class="tag">MobileNetV2</span>
+              <span class="tag">TensorFlow</span>
+              <span class="tag">OpenCV</span>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <h3 class="skill-box-title" data-i18n="sk_cat_3">⚙️ Backend &amp; Languages</h3>
+            <div class="tag-list">
+              <span class="tag">Python</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">JavaScript (Node.js / Express)</span>
+              <span class="tag">C# (.NET 8 / ASP.NET)</span>
+              <span class="tag">Java (Spring Boot)</span>
+              <span class="tag">SQL</span>
+              <span class="tag">C / C++</span>
+              <span class="tag">PHP</span>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <h3 class="skill-box-title" data-i18n="sk_cat_4">💻 Frontend &amp; Desktop UI</h3>
+            <div class="tag-list">
+              <span class="tag">React</span>
+              <span class="tag">Next.js 15 (App Router)</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">Vite</span>
+              <span class="tag">WPF (.NET / MVVM)</span>
+              <span class="tag">Flutter</span>
+              <span class="tag">HTML5 / Modern CSS</span>
+              <span class="tag">i18n (RTL / LTR)</span>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <h3 class="skill-box-title" data-i18n="sk_cat_5">🗄️ Databases &amp; Persistence</h3>
+            <div class="tag-list">
+              <span class="tag">Oracle DB / Oracle XE</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">Convex (Reactive DB)</span>
+              <span class="tag">Entity Framework Core</span>
+              <span class="tag">Schema Migrations</span>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <h3 class="skill-box-title" data-i18n="sk_cat_6">🛡️ Security, Observability &amp; DevOps</h3>
+            <div class="tag-list">
+              <span class="tag">Docker &amp; Docker Compose</span>
+              <span class="tag">OIDC / JWT (Clerk)</span>
+              <span class="tag">Server-Side RBAC</span>
+              <span class="tag">Structured Audit Logging</span>
+              <span class="tag">Cloudflare Tunnel</span>
+              <span class="tag">Vitest Automated Testing</span>
+              <span class="tag">Git / GitHub</span>
+              <span class="tag">Postman / Jira</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience, Certifications & Education Section (NO DATES as requested) -->
+    <section id="credentials" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow" data-i18n="cred_eyebrow">Background &amp; Credentials</span>
+          <h2 class="section-title" data-i18n="cred_title">Professional Experience, Certifications &amp; Education</h2>
+        </div>
+
+        <div class="two-col-grid">
+          <!-- Column 1: Professional Experience -->
+          <div>
+            <h3 style="margin-bottom: 1.15rem; font-size: 1.25rem;" data-i18n="exp_heading">Professional Experience</h3>
+            <div class="timeline-list">
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <span class="timeline-role" data-i18n="exp1_role">Full Stack &amp; Web Developer</span>
+                  <span class="timeline-loc" data-i18n="loc_tunis">Tunis, Tunisia</span>
+                </div>
+                <div class="timeline-org">ProdOffice (Digital Agency)</div>
+                <p class="timeline-desc" data-i18n="exp1_desc">
+                  Designed, developed, and deployed full-stack web solutions, custom PHP/WordPress integrations, and automated client workflows while optimizing application performance and technical SEO.
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <span class="timeline-role" data-i18n="exp2_role">Software Development Intern</span>
+                  <span class="timeline-loc" data-i18n="loc_tunis">Tunis, Tunisia</span>
+                </div>
+                <div class="timeline-org">Fidelle Assistance</div>
+                <p class="timeline-desc" data-i18n="exp2_desc">
+                  Contributed to end-to-end software delivery, internal workflow automation tools, REST API integration, and diagnostic debugging.
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <span class="timeline-role" data-i18n="exp3_role">Systems &amp; Electronics Technician Intern</span>
+                  <span class="timeline-loc" data-i18n="loc_tunis">Tunis, Tunisia</span>
+                </div>
+                <div class="timeline-org">PSV Audio Visuel</div>
+                <p class="timeline-desc" data-i18n="exp3_desc">
+                  Performed hardware diagnostics, signal troubleshooting, and preventive maintenance on commercial electronic and audio-visual systems.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Certifications & Education -->
+          <div>
+            <h3 style="margin-bottom: 1.15rem; font-size: 1.25rem;" data-i18n="cert_heading">Certifications &amp; Education</h3>
+            <div class="timeline-list">
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <span class="timeline-role">Fundamentals of Deep Learning</span>
+                  <span class="timeline-loc">NVIDIA DLI</span>
+                </div>
+                <div class="timeline-org">NVIDIA Deep Learning Institute</div>
+                <p class="timeline-desc" data-i18n="cert1_desc">
+                  Deep Neural Networks (DNNs), Computer Vision (CNNs), Sequence Modeling &amp; NLP, Transfer Learning, and model optimization on GPU-accelerated NVIDIA infrastructure.
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <span class="timeline-role">Software Development &amp; MERN Stack Certificate</span>
+                  <span class="timeline-loc">Coding Dojo</span>
+                </div>
+                <div class="timeline-org">Coding Dojo &amp; Nefel Education</div>
+                <p class="timeline-desc" data-i18n="cert2_desc">
+                  Intensive full-stack software engineering certification focused on REST API design, data modeling, authentication, and scalable web architecture (MongoDB, Express, React, Node.js).
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <span class="timeline-role" data-i18n="edu_degree">Bachelor's Degree in Computer Engineering (IoT &amp; Embedded Systems)</span>
+                  <span class="timeline-loc">ISTIC</span>
+                </div>
+                <div class="timeline-org">ISTIC Borj Cédria, Tunisia</div>
+                <p class="timeline-desc" data-i18n="edu_desc">
+                  Computer Engineering curriculum covering distributed systems, network protocols, IoT telemetry, embedded microcontrollers, software engineering, and relational databases.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Contact & Footer -->
+  <footer id="contact" class="site-footer">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 1.75rem;">
+        <span class="section-eyebrow" data-i18n="contact_eyebrow">Direct Contact &amp; Links</span>
+        <h2 class="section-title" data-i18n="contact_title">Let's Build Resilient AI &amp; Automation Systems</h2>
+        <p class="section-subtitle" data-i18n="contact_subtitle">
+          Reach out directly via email or phone, explore my source repositories on GitHub, or download my English and French resumes.
+        </p>
+      </div>
+
+      <div class="hero-actions" style="margin-bottom: 2.25rem;">
+        <a href="mailto:yassine.karfou7@gmail.com" class="btn btn-primary">
+          ✉️ yassine.karfou7@gmail.com
+        </a>
+        <a href="tel:+21696236615" class="btn btn-outline">
+          📞 +216 96 236 615
+        </a>
+        <a href="https://github.com/yassine588" target="_blank" rel="noopener" class="btn btn-outline">
+          💻 GitHub (yassine588) ↗
+        </a>
+        <a href="https://linkedin.com/in/yassine-karfouh" target="_blank" rel="noopener" class="btn btn-outline">
+          🔗 LinkedIn ↗
+        </a>
+        <a href="CV_Yassine_Karfouh_EN.pdf" download class="btn btn-outline">
+          ⬇ CV (EN PDF)
+        </a>
+        <a href="CV_Yassine_Karfouh_FR.pdf" download class="btn btn-outline">
+          ⬇ CV (FR PDF)
+        </a>
+      </div>
+
+      <div class="footer-inner" style="border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
+        <span>Yassine Karfouh — AI &amp; Automation Engineer | Tunis, Tunisia</span>
+        <span>Languages: Arabic (Native) • English (Professional) • French (Professional)</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       NATIVE MODAL DIALOGS FOR IN-DEPTH ENGINEERING BLOG ARTICLES
+       ===================================================================== -->
+
+  <!-- Article 1 Modal -->
+  <dialog id="dialog-article-1" closedby="any" aria-labelledby="article-1-title">
+    <div class="dialog-header">
+      <div>
+        <span class="section-eyebrow">TECHNICAL CASE STUDY 01 • LENDLOOP ARCHITECTURE</span>
+        <h2 id="article-1-title" style="font-size: 1.3rem; font-weight: 800;">
+          Securing Bidirectional n8n Webhooks with HMAC-SHA256, Replay Protection, and Idempotent Callbacks
+        </h2>
+      </div>
+      <form method="dialog">
+        <button type="submit" class="btn-close-dialog" autofocus>✕ Close</button>
+      </form>
+    </div>
+    <div class="dialog-body">
+      <h3>1. The Architectural Challenge in Event-Driven Automation</h3>
+      <p>
+        When coupling a reactive application backend (Next.js 15 + Convex) with an external workflow orchestrator like <strong>n8n</strong>, webhooks become critical security boundaries. Naive webhook endpoints that rely solely on obscured URLs or static bearer tokens are vulnerable to payload tampering, replay attacks, and duplicate state mutations during network retries.
+      </p>
+      <p>
+        In <strong>LendLoop</strong>, every loan request, approval state transition, and daily overdue reminder is orchestrated via containerized n8n workflows that call back into application persistence endpoints. To make this production-grade, I engineered a three-layer defense contract.
+      </p>
+
+      <h3>2. Bidirectional HMAC-SHA256 Signing with 300-Second Replay Window</h3>
+      <p>
+        Every outbound event from the application to n8n—and every callback from n8n back to the application—includes three cryptographic headers: <code>X-Webhook-Timestamp</code>, <code>X-Webhook-Event-Id</code>, and <code>X-Webhook-Signature</code>. The signature is computed over the concatenation of the Unix timestamp and the raw UTF-8 JSON body:
+      </p>
+      <pre class="code-block"><code>// Canonical HMAC-SHA256 Signing &amp; Constant-Time Verification
+const canonicalPayload = `${timestamp}.${rawJsonBody}`;
+const expectedSignature = crypto
+  .createHmac("sha256", process.env.N8N_WEBHOOK_SECRET)
+  .update(canonicalPayload, "utf8")
+  .digest("hex");
+
+// 1. Reject stale packets outside the 300-second replay tolerance window
+const ageSeconds = Math.abs(Math.floor(Date.now() / 1000) - Number(timestamp));
+if (ageSeconds &gt; 300) {
+  throw new WebhookSecurityError("TIMESTAMP_OUTSIDE_TOLERANCE_WINDOW", 401);
+}
+
+// 2. Constant-time comparison prevents timing side-channel attacks
+const isValid = crypto.timingSafeEqual(
+  Buffer.from(signatureHeader, "hex"),
+  Buffer.from(expectedSignature, "hex")
+);</code></pre>
+
+      <h3>3. Idempotent Callback Write-Backs &amp; Exponential Backoff</h3>
+      <p>
+        In distributed workflow engines, network timeouts happen even when the downstream database mutation succeeded. If n8n retries a webhook callback using exponential backoff, a non-idempotent endpoint would log duplicate notifications or corrupt loan state transitions.
+      </p>
+      <ul>
+        <li><strong>Idempotency Keys:</strong> Every workflow execution step generates a deterministic <code>eventId</code> derived from <code>hash(loanId + transitionType + scheduledDate)</code>.</li>
+        <li><strong>Atomic Deduplication:</strong> The receiving mutation checks the <code>automationEvents</code> table by <code>eventId</code> inside the same transaction before applying state changes. If already processed, it returns <code>200 OK (idempotent_noop: true)</code> so n8n marks the execution green without duplicating side effects.</li>
+        <li><strong>Automated Verification:</strong> A dedicated <strong>Vitest</strong> suite audits all n8n workflow JSON definitions in the repository alongside unit tests for replay rejection, invalid HMAC rejection, and server-side RBAC enforcement.</li>
+      </ul>
+    </div>
+  </dialog>
+
+  <!-- Article 2 Modal -->
+  <dialog id="dialog-article-2" closedby="any" aria-labelledby="article-2-title">
+    <div class="dialog-header">
+      <div>
+        <span class="section-eyebrow">TECHNICAL CASE STUDY 02 • FACTURESCAN AI PIPELINE</span>
+        <h2 id="article-2-title" style="font-size: 1.3rem; font-weight: 800;">
+          Building Production AI Document Extraction Pipelines with n8n, Vision LLMs, and RAG
+        </h2>
+      </div>
+      <form method="dialog">
+        <button type="submit" class="btn-close-dialog" autofocus>✕ Close</button>
+      </form>
+    </div>
+    <div class="dialog-body">
+      <h3>1. Moving Beyond Fragile Template-Based OCR</h3>
+      <p>
+        Traditional OCR pipelines break whenever a supplier alters invoice column layouts, mixes French and English line items, or scans documents at skewed angles. In <strong>FactureScan</strong>, the goal was to ingest arbitrary vendor invoices (PDF and images) and reliably populate an enterprise <strong>Oracle Database</strong> through a <strong>Spring Boot</strong> REST API.
+      </p>
+
+      <h3>2. Multi-Stage n8n Orchestration with Claude AI Vision &amp; RAG</h3>
+      <p>
+        Rather than prompting an LLM in a single unstructured pass, I structured the n8n pipeline into four deterministic stages:
+      </p>
+      <ul>
+        <li><strong>Stage 1 — Ingestion &amp; Normalization:</strong> n8n receives uploaded documents via webhook or watched folder, validates MIME types and file hashes, and normalizes multi-page documents.</li>
+        <li><strong>Stage 2 — Semantic Vendor Disambiguation (RAG &amp; Embeddings):</strong> Extracted header tokens (tax ID, vendor name, IBAN fragment) are embedded and queried against historical vendor profiles so the LLM receives exact supplier context, chart-of-accounts codes, and currency rules.</li>
+        <li><strong>Stage 3 — Structured Vision Extraction:</strong> Claude AI Vision processes the document with a strict JSON Schema contract requiring line-item arrays, tax breakdowns (TVA/HT/TTC), and confidence scores.</li>
+        <li><strong>Stage 4 — Cross-Field Arithmetic &amp; Spring Boot Persistence:</strong> An n8n validation node verifies that <code>sum(lineItems.net) + totalTax === totalGross</code> within floating-point tolerance before posting the validated DTO to Spring Boot and Oracle DB.</li>
+      </ul>
+
+      <pre class="code-block"><code>// Deterministic Cross-Field Validation Node in n8n before Oracle DB Commit
+const computedHT = invoice.lines.reduce((acc, item) =&gt; acc + (item.qty * item.unitPrice), 0);
+const computedTTC = Number((computedHT + invoice.taxAmount).toFixed(3));
+const discrepancy = Math.abs(computedTTC - invoice.totalTTC);
+
+if (discrepancy &gt; 0.005) {
+  return {
+    status: "NEEDS_HUMAN_REVIEW",
+    reason: `Arithmetic mismatch: computed ${computedTTC} vs extracted ${invoice.totalTTC}`,
+    routeTo: "exception_queue"
+  };
+}</code></pre>
+
+      <h3>3. Zero-Trust Deployment with Docker Compose &amp; Cloudflare Tunnel</h3>
+      <p>
+        The entire stack—n8n orchestrator, Spring Boot API service, React operator dashboard, and Oracle database—runs inside isolated Docker Compose networks, exposed securely to authorized operators via <strong>Cloudflare Tunnel</strong> without opening inbound firewall ports.
+      </p>
+    </div>
+  </dialog>
+
+  <!-- Article 3 Modal -->
+  <dialog id="dialog-article-3" closedby="any" aria-labelledby="article-3-title">
+    <div class="dialog-header">
+      <div>
+        <span class="section-eyebrow">TECHNICAL CASE STUDY 03 • ENTERPRISE .NET &amp; ORACLE XE</span>
+        <h2 id="article-3-title" style="font-size: 1.3rem; font-weight: 800;">
+          Eliminating SQL N+1 Bottlenecks &amp; Enforcing Server-Side RBAC in Enterprise Systems
+        </h2>
+      </div>
+      <form method="dialog">
+        <button type="submit" class="btn-close-dialog" autofocus>✕ Close</button>
+      </form>
+    </div>
+    <div class="dialog-body">
+      <h3>1. Diagnosing N+1 Query Storms in Operations Dashboards</h3>
+      <p>
+        In enterprise operations platforms like <strong>BodyGuard System</strong> and <strong>SecuriManager Pro</strong> (.NET 8, WPF MVVM, Entity Framework Core), operators manage hundreds of security personnel, active client contracts, and shift assignments simultaneously.
+      </p>
+      <p>
+        During performance diagnostics, loading the master schedule view triggered over 400 sequential SQL round-trips due to lazy-loaded navigation properties accessed inside UI data-binding loops—causing noticeable UI thread freezes.
+      </p>
+
+      <h3>2. Query Projection, AsNoTracking, and Hybrid Oracle XE / SQLite Persistence</h3>
+      <p>
+        I refactored the data access layer around three core database engineering principles:
+      </p>
+      <ul>
+        <li><strong>Explicit Eager Loading &amp; DTO Projections:</strong> Replaced lazy iteration with single-query projections (<code>.Select()</code> and split-query <code>.Include()</code> where appropriate) combined with <code>.AsNoTracking()</code> for read-heavy dashboards, cutting query execution time by over 85%.</li>
+        <li><strong>Cross-Provider Schema Compatibility (Oracle XE &amp; SQLite):</strong> Engineered deterministic EF Core entity configurations mapping <code>Guid</code> primary keys to Oracle <code>RAW(16)</code> columns while maintaining seamless local offline fallback on SQLite.</li>
+        <li><strong>Async Command Dispatching:</strong> Moved all database I/O and backup/export tasks off the UI dispatcher thread with cancellation tokens and structured error telemetry.</li>
+      </ul>
+
+      <pre class="code-block"><code>// Optimized Single-Roundtrip Projection with AsNoTracking in EF Core (.NET 8)
+public async Task&lt;IReadOnlyList&lt;ShiftAssignmentDto&gt;&gt; GetActiveRosterAsync(
+    DateOnlydutyDate, CancellationToken ct)
+{
+    return await _dbContext.ShiftAssignments
+        .AsNoTracking()
+        .Where(s =&gt; s.DutyDate == dutyDate &amp;&amp; s.Contract.IsActive)
+        .OrderBy(s =&gt; s.StartTime)
+        .Select(s =&gt; new ShiftAssignmentDto(
+            s.Id,
+            s.Guard.FullName,
+            s.Guard.BadgeNumber,
+            s.Contract.ClientName,
+            s.SiteLocation,
+            s.StartTime,
+            s.EndTime
+        ))
+        .ToListAsync(ct);
+}</code></pre>
+
+      <h3>3. Granular RBAC &amp; Immutable Audit Trails</h3>
+      <p>
+        Every sensitive operation—modifying contract rates, overriding shift rosters, or exporting payroll summaries—is guarded by role policies (Admin, Operations Manager, Supervisor, Auditor) and automatically records an immutable audit entry with actor identity, UTC timestamp, and before/after state snapshots.
+      </p>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
